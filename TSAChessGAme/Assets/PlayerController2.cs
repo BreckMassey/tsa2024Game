@@ -6,112 +6,137 @@ public class PlayerController2 : MonoBehaviour
 {
 
     public Rigidbody2D rb;
-    public Vector2 rideHeight;
-    public Vector2 springConstant;
-    public Vector2 springDamping;
+    public float groundHeight;
     public LayerMask groundLayer;
     public Vector2 acceleration;
+    public Vector2 maxSpeeds;
     public float gravity;
     public float jumpForce;
     public Transform groundRaycastPosition;
+    bool pastGrounded;
     bool grounded;
-    bool jumped;
-    public float frictionConstant;
-    public Vector2 maxVelocity;
-    bool hitWall;
-    public Vector2 airDrag;
-    public bool spaceHitLastFrame;
-    public bool crouching;
-    // Start is called before the first frame update
+    bool spacePressed;
+    bool pastSpacePressed;
+    Vector2 velocity;
+    public Vector2 frictions;
+    Vector2 shootDir;
+    public GameObject bullet;
+    public float shootTime;
+    float shootTimer;
+    public int totalJumps;
+    int jumps;
+    public int health;
     void Start()
     {
-        
+        velocity = new Vector2(0, 0);
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        shootTimer -= Time.deltaTime;
+        Shooting();
+    }
+
+
     void FixedUpdate()
     {
+        Movement();
+    } 
 
-        hitWall = false;
-        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxVelocity.x, maxVelocity.x), Mathf.Clamp(rb.velocity.y, -maxVelocity.y, maxVelocity.y));
+    void Movement() {
+            pastGrounded = grounded;
+            grounded = false;
+            RaycastHit2D hit = Physics2D.BoxCast(groundRaycastPosition.position, new Vector2(transform.localScale.x * 1f, 0.1f), 0, Vector2.down, groundHeight, groundLayer);
 
-        grounded = false;
-       RaycastHit2D hit=Physics2D.Raycast(groundRaycastPosition.position, Vector2.down, rideHeight.y * 2, groundLayer);
-        if (hit.collider != null) {
-            if (hit.distance < rideHeight.y * 2)
+            if (hit.collider != null)
             {
-                if (!(jumped && rb.velocity.y > 0))
-                {
-                //    rb.velocity+=((new Vector2(0, (rideHeight.y - hit.distance) * springConstant.y)));
-                  //  rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * springDamping.y);
-                }
-                if (rb.velocity.y<0) { 
-                    jumped = false;
-                }
                 grounded = true;
             }
-            else {
-            }
-        }
-        
-        
-        /*RaycastHit2D hitR = Physics2D.Raycast(transform.position, Vector2.right, rideHeight.x * 2, groundLayer);
-        if (hitR.collider != null)
-        {
-            Debug.Log(hitR.distance+" Right");
-            if (hitR.distance < rideHeight.x * 2)
+           // Debug.Log(grounded);
+
+           
+            if (grounded&&!pastGrounded)
             {
-                hitWall = true;
-                Debug.Log(hitR.distance);
-                Debug.Log((rideHeight.x - hitR.distance) * springConstant.x);
-                rb.velocity = new Vector2(Mathf.Max(rideHeight.x - hitR.distance,0) * -springConstant.x, rb.velocity.y);
-                    rb.velocity = new Vector2(rb.velocity.x * springDamping.x, rb.velocity.y);
+                jumps = totalJumps;
+                velocity.y = Mathf.Max(velocity.y,-3f);
             }
-        }
-
-        RaycastHit2D hitL = Physics2D.Raycast(transform.position, Vector2.left, rideHeight.x * 2, groundLayer);
-        if (hitL.collider != null)
-        {
-            Debug.Log(hitL.distance+" Left");
-            if (hitL.distance < rideHeight.x * 2)
+            else
             {
-                hitWall = true;
-                Debug.Log(hitL.distance);
-                rb.velocity += ((new Vector2((rideHeight.x - hitL.distance) * springConstant.x, 0)));
-                rb.velocity = new Vector2(rb.velocity.x * springDamping.x, rb.velocity.y);
+
+                velocity.y -= gravity * Time.fixedDeltaTime;
             }
+            if (!grounded && pastGrounded)
+            {
+                jumps = Mathf.Min(jumps, totalJumps - 1);
+                velocity.y = Mathf.Max(velocity.y, 0);
+            }
+
+            spacePressed = false;
+            if (Input.GetKey(KeyCode.Space))
+            {
+                spacePressed = true;
+            }
+
+            if (spacePressed && !pastSpacePressed && jumps > 0)
+            {
+                jumps--;
+                velocity.y += jumpForce;
+            }
+
+        if (!Input.GetKey(KeyCode.LeftShift)||!grounded)
+            {
+               velocity.x += Input.GetAxis("Horizontal") * Time.fixedDeltaTime * acceleration.x;
+            }
+            velocity *= frictions;
+
+            velocity.x = Mathf.Clamp(velocity.x, -maxSpeeds.x, maxSpeeds.x);
+            velocity.y = Mathf.Clamp(velocity.y, -maxSpeeds.y, maxSpeeds.y);
+            rb.velocity = velocity;
+
+
+
+            pastSpacePressed = spacePressed;
         }
-        */
-
-        rb.velocity+=(new Vector2(0, gravity * -1*Time.fixedDeltaTime));
-
-        rb.velocity += (new Vector2(Input.GetAxis("Horizontal") * acceleration.x*Time.fixedDeltaTime, 0));
-
-        crouching = Input.GetKey(KeyCode.S); 
-        
-        
 
 
-        if (grounded && Input.GetKey(KeyCode.Space)&&!spaceHitLastFrame&&!crouching) 
-        {
-            rb.velocity += (new Vector2(0, jumpForce));
-            jumped = true;
+    void OldMovement() {
+        /*grounded = false;
+           RaycastHit2D hit=Physics2D.Raycast(groundRaycastPosition.position, Vector2.down, rideHeight * 2, groundLayer);
+            if (hit.collider != null) {
+                if (hit.distance < rideHeight * 2)
+                {
+                    if (!(jumped && rb.velocity.y > 0))
+                    {
+                        rb.AddForce((new Vector2(0, (rideHeight - hit.distance) * springConstant)));
+                        rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * springDamping);
+                    }
+                    if (!grounded) { 
+                        jumped = false;
+                    }
+                    grounded = true;
+                }
+                else {
+                }
+            }
+            rb.AddForce(new Vector2(0, gravity * -1));
+
+            rb.AddForce(new Vector2(Input.GetAxis("Horizontal") * acceleration.x*Time.deltaTime, 0));
+
+            Debug.Log(grounded);
+            if (grounded && Input.GetKey(KeyCode.Space)) 
+            {
+                rb.AddForce(new Vector2(0, jumpForce));
+                jumped = true;
+            }*/
+    }
+
+
+    void Shooting()
+    {
+        if (Input.GetKey(KeyCode.J)&&shootTimer<=0) {
+            shootTimer = shootTime;
+            shootDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            Instantiate(bullet, new Vector3(transform.position.x + shootDir.normalized.x, transform.position.y + shootDir.normalized.y, -1f), Quaternion.Euler(0,0,Vector2.SignedAngle(transform.right, shootDir.normalized)));
         }
-
-        if (grounded&&!(Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.D))&&hitWall == !true)
-        {
-          //  rb.velocity = new Vector2(rb.velocity.x  * frictionConstant * Time.deltaTime, rb.velocity.y);
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
-
-        if (!grounded) {
-            rb.velocity = new Vector2(rb.velocity.x * airDrag.x, rb.velocity.y * airDrag.y);
-        }
-
-
-        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxVelocity.x, maxVelocity.x), Mathf.Clamp(rb.velocity.y, -maxVelocity.y, maxVelocity.y));
-
-
-        spaceHitLastFrame = Input.GetKey(KeyCode.Space);
     }
 }
