@@ -136,7 +136,9 @@ public class PlayerController2 : MonoBehaviour
         if (Input.GetKey(KeyCode.J)&&shootTimer<=0) {
             shootTimer = shootTime;
             shootDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            Instantiate(bullet, new Vector3(transform.position.x + shootDir.normalized.x, transform.position.y + shootDir.normalized.y, -1f), Quaternion.Euler(0,0,Vector2.SignedAngle(transform.right, shootDir.normalized)));
+            //    Instantiate(bullet, new Vector3(transform.position.x + shootDir.normalized.x, transform.position.y + shootDir.normalized.y, -1f), Quaternion.Euler(0,0,Vector2.SignedAngle(transform.right, shootDir.normalized)));
+            Instantiate(bullet, new Vector3(transform.position.x,transform.position.y, -1f), Quaternion.Euler(0, 0, Vector2.SignedAngle(transform.right, shootDir.normalized)));
+
         }
     }
 }

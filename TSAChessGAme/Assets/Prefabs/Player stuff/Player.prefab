@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3505884976539911055}
   - component: {fileID: 3505884976539911040}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: playerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3505884977324555699}
   - component: {fileID: 3505884977324555700}
   - component: {fileID: 3505884977324555701}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Player
   m_TagString: player
   m_Icon: {fileID: 0}
@@ -246,6 +246,7 @@ MonoBehaviour:
   bullet: {fileID: 8045714402256100543, guid: 4c4292ab4a589b74aa40e9f414a19aaa, type: 3}
   shootTime: 0.2
   totalJumps: 2
+  health: 0
 --- !u!1 &3505884977733354333
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3505884977733354334}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
