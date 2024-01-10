@@ -8,6 +8,8 @@ TagManager:
   - ground
   - enemy
   - checker
+  - healthPoint
+  - unshootableEnemy
   layers:
   - Default
   - TransparentFX
@@ -19,9 +21,9 @@ TagManager:
   - enemy
   - checker
   - ground
-  - 
-  - 
-  - 
+  - pawn
+  - floatingGround
+  - unshootableEnemy
   - 
   - 
   - 

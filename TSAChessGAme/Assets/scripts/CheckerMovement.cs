@@ -11,6 +11,7 @@ public class CheckerMovement : MonoBehaviour
     public Sprite[] checkerSprites;
     float timeAlive;
     Vector3 originalScale;
+    public GameObject particlePrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,10 +56,14 @@ public class CheckerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "enemy") { 
-        
+        if (collision.transform.tag == "enemy") {
+            collision.transform.GetComponent<BossParent>().damage(damage);
         }
+        
+        Instantiate(particlePrefab,transform.position,Quaternion.identity);
+        
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
         timeAlive = Mathf.Max(timeAlive, 10);
+        Destroy(gameObject);
     }
 }
