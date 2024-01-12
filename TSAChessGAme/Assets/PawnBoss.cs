@@ -32,4 +32,11 @@ public class PawnBoss : BossParent
         transform.Translate(new Vector3(walkDir*Time.deltaTime*speed, 0, 0));
     
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "checker")
+        {
+            health--;
+        }
+    }
 }

@@ -29,4 +29,19 @@ public class DamagePlayer : MonoBehaviour
         }
 
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "player")
+        {
+            collision.collider.GetComponent<PlayerController2>().takeDamage();
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "player")
+        {
+            collision.collider.GetComponent<PlayerController2>().takeDamage();
+        }
+
+    }
 }
