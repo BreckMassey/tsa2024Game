@@ -41,7 +41,10 @@ public class PlayerController2 : MonoBehaviour
         health = Mathf.Max(health, 3);
         healthIcons = new Rigidbody2D[health];
 
+        invincibility = 5;
+
         setUpHealth();
+
     }
 
 

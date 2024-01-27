@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  rotationSpeed: 0
+  rotationSpeed: 500
   damage: 1
   enemyToTrack: {fileID: 0}
   checkerSprites:
