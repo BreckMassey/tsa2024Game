@@ -33,6 +33,8 @@ public class PlayerController2 : MonoBehaviour
     public SpriteRenderer playerSprite;
     public GameObject HurtParticleEffect;
     public string[] enemyTags;
+    float coyoteTime;
+
     void Start()
     {
         velocity = new Vector2(0, 0);
@@ -52,6 +54,8 @@ public class PlayerController2 : MonoBehaviour
     {
         invincibility -= Time.deltaTime;
         shootTimer -= Time.deltaTime;
+        coyoteTime -= Time.deltaTime;
+        Debug.Log(coyoteTime+" "+grounded);
         Shooting();
         InvincibilityFlashing();
         repositionHealth();
@@ -126,6 +130,10 @@ public class PlayerController2 : MonoBehaviour
             if (hit.collider != null)
             {
                 grounded = true;
+                coyoteTime = 0.2f;
+            }
+            else if (coyoteTime > 0) {
+               // grounded = true;
             }
            // Debug.Log(grounded);
 
@@ -133,19 +141,27 @@ public class PlayerController2 : MonoBehaviour
             if (grounded&&!pastGrounded)
             {
                 jumps = totalJumps;
-                velocity.y = Mathf.Max(velocity.y,-3f);
+                velocity.y = Mathf.Max(velocity.y,-1f);
             }
             else
             {
-
                 velocity.y -= gravity * Time.fixedDeltaTime;
             }
-            if (!grounded && pastGrounded)
+            if (!grounded && pastGrounded&&coyoteTime<0)
             {
                 jumps = Mathf.Min(jumps, totalJumps - 1);
                 velocity.y = Mathf.Max(velocity.y, 0);
             }
-
+            if (!grounded && pastGrounded)
+            {
+                //jumps = Mathf.Min(jumps, totalJumps - 1);
+                velocity.y = Mathf.Max(velocity.y, 0);
+            }
+            if (coyoteTime<0)
+            {
+                jumps = Mathf.Min(jumps, totalJumps - 1);
+                //velocity.y = Mathf.Max(velocity.y, 0);
+            }
             spacePressed = false;
             if (Input.GetKey(KeyCode.Space))
             {
@@ -156,6 +172,7 @@ public class PlayerController2 : MonoBehaviour
             {
                 jumps--;
                 velocity.y += jumpForce;
+                coyoteTime = 0;
             }
 
         if (!Input.GetKey(KeyCode.LeftShift)||!grounded)
