@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2058597340739193961}
   - component: {fileID: 3024033962422762889}
   - component: {fileID: 8518498669753692739}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: Knight_Sweeper
   m_TagString: enemy
   m_Icon: {fileID: 0}
