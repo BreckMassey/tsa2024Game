@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class PlayerController2 : MonoBehaviour
 {
 
@@ -29,12 +29,18 @@ public class PlayerController2 : MonoBehaviour
     int facing;
     public GameObject healthIconPrefab;
     Rigidbody2D[] healthIcons;
-    float invincibility;
+    public float invincibility;
     public SpriteRenderer playerSprite;
     public GameObject HurtParticleEffect;
+    public GameObject deathParticles;
+    
     public string[] enemyTags;
     float coyoteTime;
 
+    public GameObject loseScreen;
+    public TextMeshProUGUI scoreText;
+
+    public float timeSinceStart;
     void Start()
     {
         velocity = new Vector2(0, 0);
@@ -46,19 +52,32 @@ public class PlayerController2 : MonoBehaviour
         invincibility = 5;
 
         setUpHealth();
-
+        loseScreen.SetActive(false);
     }
 
 
     private void Update()
     {
+        timeSinceStart += Time.deltaTime;
         invincibility -= Time.deltaTime;
         shootTimer -= Time.deltaTime;
         coyoteTime -= Time.deltaTime;
-        Debug.Log(coyoteTime+" "+grounded);
+        //Debug.Log(coyoteTime+" "+grounded);
         Shooting();
         InvincibilityFlashing();
         repositionHealth();
+        if (invincibility <= 5)
+        {
+            scoreText.text = "Time: " + Mathf.Floor(timeSinceStart) + " sec\nScore: " + Mathf.Floor(250 - timeSinceStart + health * health * 100);
+        }   
+        if (health <= 0)
+        {
+
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
+
+            loseScreen.SetActive(true);
+            Destroy(gameObject);
+        }
     }
 
 

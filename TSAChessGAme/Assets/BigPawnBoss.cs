@@ -24,71 +24,88 @@ public class BigPawnBoss : BossParent
     public Slider healthSlider;
 
     public float smoothHealth;
+
+    float startDelay=5;
+
+
+    public GameObject winScreen;
     // Start is called before the first frame update
     void Start()
     {
         health = stageHealths[0];
         smoothHealth = health;
-        player = GameObject.FindGameObjectWithTag("player");   
+        player = GameObject.FindGameObjectWithTag("player");
+
+        winScreen.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        startDelay -= Time.deltaTime;
         smoothHealth -= (smoothHealth - health) * Time.deltaTime*3;
-
-        if (health < 0)
+        if (startDelay <= 0)
         {
-            stage = Mathf.Min(stage,-1);
-            healthSlider.value = 0;
+            if (health < 0)
+            {
+                stage = Mathf.Min(stage, -1);
+                healthSlider.value = 0;
+            }
+            else
+            {
+
+                for (int i = 0; i < stageHealths.Length; i++)
+                {
+                    if (health < stageHealths[i])
+                    {
+                        stage = i;
+                    }
+                }
+
+                healthSlider.value = smoothHealth / stageHealths[0];
+            }
+
+            if (stage == -1)
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    Instantiate(deathParticle, transform.position + new Vector3(Random.Range(-2, 2), Random.Range(-4, 4) - 3, 0), Quaternion.identity);
+                }
+                sprite.enabled = false;
+                stage = -2;
+                player.GetComponent<PlayerController2>().invincibility = 10000;
+
+                winScreen.SetActive(true);
+            }
+
+            if (stage == 0)
+            {
+                spawnPawns();
+                shootCheckers();
+                //spawnFallingCheckers();
+            }
+            if (stage == 1)
+            {
+                spawnPawns();
+                shootCheckers();
+                spawnFallingCheckers();
+            }
+            if (stage == 2)
+            {
+                spawnPawns();
+                shootCheckers();
+                spawnFallingCheckers();
+            }
+
+
+
+            walkingPawnSpawnDelay -= Time.deltaTime;
+            fallingCheckerSpawnDelay -= Time.deltaTime;
+            shootingDelay -= Time.deltaTime;
         }
         else {
-
-            for (int i = 0; i < stageHealths.Length; i++)
-            {
-                if (health < stageHealths[i])
-                {
-                    stage = i;
-                }
-            }
-
-            healthSlider.value = smoothHealth / stageHealths[0];
+            health = stageHealths[0];
         }
-
-        if (stage == -1) {
-            for (int i = 0; i < 100; i++)
-            {
-                Instantiate(deathParticle, transform.position + new Vector3(Random.Range(-2, 2), Random.Range(-4, 4) - 3, 0), Quaternion.identity);
-            }
-            sprite.enabled = false;
-            stage = -2;
-
-        }
-
-        if (stage == 0)
-        {
-            spawnPawns();
-            shootCheckers();
-            //spawnFallingCheckers();
-        }
-        if (stage == 1)
-        {
-            spawnPawns();
-            shootCheckers();
-            spawnFallingCheckers();
-        }
-        if (stage == 2)
-        {
-            spawnPawns();
-            shootCheckers();
-            spawnFallingCheckers();
-        }
-
-
-
-        walkingPawnSpawnDelay -= Time.deltaTime;
-        fallingCheckerSpawnDelay -= Time.deltaTime;
-        shootingDelay -= Time.deltaTime;
     }
 
     void spawnPawns() {
@@ -137,7 +154,7 @@ public class BigPawnBoss : BossParent
                 checkerSpawned.GetComponent<EnemyCheckerMovement>().rotationSpeed = 60;
             }
             shots++;
-            shootingDelay = 0.4f;
+            shootingDelay = 0.3f;
             if (shots >= 3||(stage==1&&shots>=2)||(stage>1&&shots>=1)) {
                 shots = 0;
                 shootingDelay = Random.Range(3, 6);

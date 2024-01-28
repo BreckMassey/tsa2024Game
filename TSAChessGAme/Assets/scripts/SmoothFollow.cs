@@ -16,7 +16,7 @@ public class SmoothFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate((transform.position + offset - follow.position) * -1 * percent * Time.deltaTime);
+        transform.Translate((transform.position + offset - (follow.position)*0.33f) * -1 * percent * Time.deltaTime);
     }
 
 }

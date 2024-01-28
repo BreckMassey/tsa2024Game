@@ -251,6 +251,10 @@ MonoBehaviour:
   healthIconPrefab: {fileID: 1589626566747100770, guid: b9d837e60a6db5c4f979d70ad7f5ccfa, type: 3}
   playerSprite: {fileID: 1058212653755841169}
   HurtParticleEffect: {fileID: 740847840511789333, guid: 171b8e30cabdf0643ba6edf7a9706b90, type: 3}
+  deathParticles: {fileID: 3450096689104863400, guid: 87eace5829ccb7e4e8d7b1cb5b0e3c9b, type: 3}
+  enemyTags:
+  - enemy
+  - unshootableEnemy
 --- !u!1 &3505884977733354333
 GameObject:
   m_ObjectHideFlags: 0
