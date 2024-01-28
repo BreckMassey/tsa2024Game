@@ -39,7 +39,7 @@ public class BishopWalker : MonoBehaviour
             hp--;
         }
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("wallBishop") 
+        if (collision.gameObject.layer == LayerMask.NameToLayer("BishopWall") 
         || collision.gameObject.layer == LayerMask.NameToLayer("enemy") 
         || collision.gameObject.layer == LayerMask.NameToLayer("player"))
         {

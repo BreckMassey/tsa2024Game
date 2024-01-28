@@ -27,7 +27,6 @@ public class BishopClearMap : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
             bool isVertical = Random.Range(0, 2) == 1;
             SpawnBulletRow(isVertical);
-            // Additional code to wait before the bullets start moving
         }
     }
 

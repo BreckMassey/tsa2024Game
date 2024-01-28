@@ -10,7 +10,7 @@ public class Knight_Bullet_Behavior : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("player"); // Assuming the player has the tag "Player"
+        player = GameObject.FindWithTag("player"); 
     }
 
     void Update()
