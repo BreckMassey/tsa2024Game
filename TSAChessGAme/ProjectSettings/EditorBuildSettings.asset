@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 6917e70ed6b5574458dcf5766ad885c4
+  - enabled: 1
+    path: Assets/Scenes/Map.unity
+    guid: 67da6ca1892b3b1449cab7acfc2c3908
+  - enabled: 1
     path: Assets/Scenes/PlayerMovementTest.unity
     guid: 37b5f14520c6afe42876f9f6424c36a2
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 7f6d261ea26047e4eb2a9f3ae48ba57d
   m_configObjects: {}

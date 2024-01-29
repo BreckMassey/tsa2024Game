@@ -41,6 +41,8 @@ public class PlayerController2 : MonoBehaviour
     public TextMeshProUGUI scoreText;
 
     public float timeSinceStart;
+    public AudioClip shootSound;
+    public AudioSource audioSource;
     void Start()
     {
         velocity = new Vector2(0, 0);
@@ -252,7 +254,13 @@ public class PlayerController2 : MonoBehaviour
             shootTimer = shootTime;
             //    Instantiate(bullet, new Vector3(transform.position.x + shootDir.normalized.x, transform.position.y + shootDir.normalized.y, -1f), Quaternion.Euler(0,0,Vector2.SignedAngle(transform.right, shootDir.normalized)));
             Instantiate(bullet, new Vector3(transform.position.x,transform.position.y, -1f), Quaternion.Euler(0, 0, Vector2.SignedAngle(transform.right, shootDir.normalized)));
-
+            audioSource.clip = shootSound;
+            audioSource.pitch = Random.RandomRange(0.3f, 0.45f);
+            audioSource.volume = Random.RandomRange(0.6f, 0.6f);
+           // if (!audioSource.isPlaying)
+            //{
+                audioSource.Play();
+            //}   
         }
     }
 
