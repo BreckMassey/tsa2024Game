@@ -253,7 +253,9 @@ public class PlayerController2 : MonoBehaviour
         if (Input.GetKey(KeyCode.J)&&shootTimer<=0) {
             shootTimer = shootTime;
             //    Instantiate(bullet, new Vector3(transform.position.x + shootDir.normalized.x, transform.position.y + shootDir.normalized.y, -1f), Quaternion.Euler(0,0,Vector2.SignedAngle(transform.right, shootDir.normalized)));
-            Instantiate(bullet, new Vector3(transform.position.x,transform.position.y, -1f), Quaternion.Euler(0, 0, Vector2.SignedAngle(transform.right, shootDir.normalized)));
+            float offset = Random.Range(-0.4f, 0.4f);
+            Instantiate(bullet, new Vector3(transform.position.x- shootDir.y* offset, transform.position.y+ shootDir.x* offset, -1f), Quaternion.Euler(0, 0, Vector2.SignedAngle(transform.right, shootDir.normalized)));
+            
             audioSource.clip = shootSound;
             audioSource.pitch = Random.RandomRange(0.3f, 0.45f);
             audioSource.volume = Random.RandomRange(0.6f, 0.6f);

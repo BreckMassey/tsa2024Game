@@ -19,16 +19,22 @@ public class LevelSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt(playerPrefLevelName) == null) {
-            PlayerPrefs.SetInt(playerPrefLevelName, 0);
-        }
-        if (PlayerPrefs.GetInt(playerPrefLevelName)>0) {
-            for (int i = 0; i < passThroughColliders.Length; i++) {
-                passThroughColliders[i].enabled = false;
-            }
-            for (int i = 0; i < passThroughSprites.Length; i++)
+        if (playerPrefLevelName != "")
+        {
+            if (PlayerPrefs.GetInt(playerPrefLevelName) == null)
             {
-                passThroughSprites[i].enabled = false;
+                PlayerPrefs.SetInt(playerPrefLevelName, 0);
+            }
+            if (PlayerPrefs.GetInt(playerPrefLevelName) > 0)
+            {
+                for (int i = 0; i < passThroughColliders.Length; i++)
+                {
+                    passThroughColliders[i].enabled = false;
+                }
+                for (int i = 0; i < passThroughSprites.Length; i++)
+                {
+                    passThroughSprites[i].enabled = false;
+                }
             }
         }
     }
@@ -36,7 +42,7 @@ public class LevelSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log( Input.GetKeyUp(KeyCode.Space));
+      //  Debug.Log( Input.GetKeyUp(KeyCode.Space));
         if (playerInArea && Input.GetKeyUp(KeyCode.Space)) {
             SceneManager.LoadScene(level);
         }
@@ -44,17 +50,21 @@ public class LevelSelect : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("error");
         playerInArea = true;
         instructionMenu.SetActive(true);
         instructionMenu.GetComponent<endScreenEffects>().expand();
         titleText.text = bossName;
 
     }
+    
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         playerInArea = false;
         instructionMenu.SetActive(true);
         instructionMenu.GetComponent<endScreenEffects>().contract();
+        titleText.text = bossName;
 
     }
 }

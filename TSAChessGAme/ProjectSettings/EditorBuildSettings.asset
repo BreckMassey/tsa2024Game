@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 7f6d261ea26047e4eb2a9f3ae48ba57d
+  - enabled: 1
+    path: Assets/Scenes/KnightBossFight.unity
+    guid: 9366c43cf44954dbf8c3987352e0467b
   m_configObjects: {}

@@ -2790,8 +2790,8 @@ MonoBehaviour:
   shootingChecker: {fileID: 8045714402256100543, guid: 868436a1032c2eb41a19718a3f3c56fe, type: 3}
   deathParticle: {fileID: 740847840511789333, guid: f0f15328b0b69404eb321cba3a80a018, type: 3}
   stageHealths:
-  - 120
-  - 70
+  - 100
+  - 60
   - 30
   sprite: {fileID: 1914984478}
   healthSlider: {fileID: 2053066672}
