@@ -8,16 +8,29 @@ public class LevelSelect : MonoBehaviour
 {
 
     public int level;
-    public BoxCollider2D passThroughColliders;
+    public BoxCollider2D[] passThroughColliders;
+    public SpriteRenderer[] passThroughSprites;
     public LayerMask playerLayer;
     bool playerInArea;
     public string bossName;
     public GameObject instructionMenu;
     public TextMeshProUGUI titleText;
+    public string playerPrefLevelName;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PlayerPrefs.GetInt(playerPrefLevelName) == null) {
+            PlayerPrefs.SetInt(playerPrefLevelName, 0);
+        }
+        if (PlayerPrefs.GetInt(playerPrefLevelName)>0) {
+            for (int i = 0; i < passThroughColliders.Length; i++) {
+                passThroughColliders[i].enabled = false;
+            }
+            for (int i = 0; i < passThroughSprites.Length; i++)
+            {
+                passThroughSprites[i].enabled = false;
+            }
+        }
     }
 
     // Update is called once per frame

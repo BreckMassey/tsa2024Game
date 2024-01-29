@@ -2797,6 +2797,7 @@ MonoBehaviour:
   healthSlider: {fileID: 2053066672}
   smoothHealth: 0
   winScreen: {fileID: 1129318270}
+  playerPrefLevelName: pawnBossScore
 --- !u!212 &1522181534
 SpriteRenderer:
   m_ObjectHideFlags: 0

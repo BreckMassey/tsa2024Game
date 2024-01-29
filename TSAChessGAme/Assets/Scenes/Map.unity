@@ -2159,13 +2159,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 3
-  passThroughColliders: {fileID: 0}
+  passThroughColliders: []
+  passThroughSprites: []
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
   bossName: Tutorial
   instructionMenu: {fileID: 559599581}
   titleText: {fileID: 1449773889}
+  playerPrefLevelName: tutorial
 --- !u!1 &1525306865
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,9 +2549,9 @@ PolygonCollider2D:
       - {x: -0.54847413, y: 1.4933702}
       - {x: -1.8944745, y: 1.5046203}
       - {x: -2.5548396, y: 1.9879618}
-      - {x: -2.564441, y: 1.3712566}
-      - {x: -2.8059065, y: 1.4551495}
-      - {x: -3.2448225, y: 1.3406929}
+      - {x: -2.487987, y: 2.2275414}
+      - {x: -3.0658498, y: 2.1967535}
+      - {x: -3.5353477, y: 2.2122688}
       - {x: -3.6272779, y: 1.4060243}
       - {x: -4.5690804, y: 1.3390738}
       - {x: -4.666771, y: 0.14912254}
@@ -2726,13 +2728,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 2
-  passThroughColliders: {fileID: 0}
+  passThroughColliders:
+  - {fileID: 1901972300}
+  - {fileID: 1901972299}
+  passThroughSprites:
+  - {fileID: 1901972295}
+  - {fileID: 461231857}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
   bossName: Pawn
   instructionMenu: {fileID: 559599581}
   titleText: {fileID: 1449773889}
+  playerPrefLevelName: pawnBossScore
 --- !u!50 &1901972306
 Rigidbody2D:
   serializedVersion: 4
@@ -2892,7 +2900,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 13.7
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2916,7 +2924,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2036667533}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -10}
+  m_LocalPosition: {x: 0, y: 0.11, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2938,9 +2946,9 @@ MonoBehaviour:
   follow:
   - {fileID: 942277286}
   setPos:
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 13.5, z: 0}
   percent: 5
-  offset: {x: 0, y: 0, z: 10}
+  offset: {x: 0, y: -2, z: 10}
 --- !u!1 &2046872050
 GameObject:
   m_ObjectHideFlags: 0
@@ -2999,7 +3007,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Space To Fight
+  m_text: Press Space To Start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc8a78bf36905ce409c761ca82ca22a7, type: 2}
   m_sharedMaterial: {fileID: 2105571753074432948, guid: dc8a78bf36905ce409c761ca82ca22a7, type: 2}

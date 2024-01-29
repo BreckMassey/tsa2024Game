@@ -29,6 +29,8 @@ public class BigPawnBoss : BossParent
 
 
     public GameObject winScreen;
+
+    public string playerPrefLevelName;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,7 @@ public class BigPawnBoss : BossParent
             {
                 stage = Mathf.Min(stage, -1);
                 healthSlider.value = 0;
+                PlayerPrefs.SetInt(playerPrefLevelName, 1);
             }
             else
             {
