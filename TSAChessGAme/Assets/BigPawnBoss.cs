@@ -35,7 +35,7 @@ public class BigPawnBoss : BossParent
     void Start()
     {
         health = stageHealths[0];
-        smoothHealth = health;
+        smoothHealth = 0;
         player = GameObject.FindGameObjectWithTag("player");
 
         winScreen.SetActive(false);
@@ -108,6 +108,7 @@ public class BigPawnBoss : BossParent
         }
         else {
             health = stageHealths[0];
+            healthSlider.value = smoothHealth / stageHealths[0];
         }
     }
 
