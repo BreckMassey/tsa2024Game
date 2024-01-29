@@ -245,16 +245,20 @@ MonoBehaviour:
   groundRaycastPosition: {fileID: 3505884977733354334}
   frictions: {x: 0.8, y: 1}
   bullet: {fileID: 8045714402256100543, guid: 4c4292ab4a589b74aa40e9f414a19aaa, type: 3}
-  shootTime: 0.2
+  shootTime: 0.15
   totalJumps: 2
   health: 3
   healthIconPrefab: {fileID: 1589626566747100770, guid: b9d837e60a6db5c4f979d70ad7f5ccfa, type: 3}
+  invincibility: 0
   playerSprite: {fileID: 1058212653755841169}
   HurtParticleEffect: {fileID: 740847840511789333, guid: 171b8e30cabdf0643ba6edf7a9706b90, type: 3}
   deathParticles: {fileID: 3450096689104863400, guid: 87eace5829ccb7e4e8d7b1cb5b0e3c9b, type: 3}
   enemyTags:
   - enemy
   - unshootableEnemy
+  loseScreen: {fileID: 0}
+  scoreText: {fileID: 0}
+  timeSinceStart: 0
 --- !u!1 &3505884977733354333
 GameObject:
   m_ObjectHideFlags: 0
