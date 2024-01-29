@@ -25,10 +25,10 @@ TagManager:
   - pawn
   - floatingGround
   - unshootableEnemy
+  - BishopWall
+  - BishopWalker
+  - KightWall
   - levelSelect
-  - 
-  - 
-  - 
   - 
   - 
   - 
