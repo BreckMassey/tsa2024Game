@@ -27,7 +27,11 @@ TagManager:
   - unshootableEnemy
   - BishopWall
   - BishopWalker
+<<<<<<< HEAD
   - KnightWall
+=======
+  - KightWall
+>>>>>>> 4beb829a90cd8f90f2d0f84535e9e3624b771b9d
   - levelSelect
   - 
   - 

@@ -302,7 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 110780604}
   - component: {fileID: 110780603}
-  m_Layer: 13
+  m_Layer: 16
   m_Name: W_Pawn (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 253782817}
   - component: {fileID: 253782816}
-  m_Layer: 13
+  m_Layer: 16
   m_Name: W_Pawn (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -714,7 +714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 461231858}
   - component: {fileID: 461231857}
-  m_Layer: 13
+  m_Layer: 16
   m_Name: W_Pawn (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1139,7 +1139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 932413941}
   - component: {fileID: 932413940}
-  m_Layer: 13
+  m_Layer: 16
   m_Name: W_Pawn (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2046,7 +2046,7 @@ GameObject:
   - component: {fileID: 1512965249}
   - component: {fileID: 1512965251}
   - component: {fileID: 1512965250}
-  m_Layer: 13
+  m_Layer: 16
   m_Name: your king
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2178,7 +2178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1525306867}
   - component: {fileID: 1525306866}
-  m_Layer: 13
+  m_Layer: 16
   m_Name: W_Pawn (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2420,7 +2420,7 @@ GameObject:
   - component: {fileID: 1901972303}
   - component: {fileID: 1901972305}
   - component: {fileID: 1901972306}
-  m_Layer: 13
+  m_Layer: 16
   m_Name: W_Pawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2772,7 +2772,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1903658711}
   - component: {fileID: 1903658710}
-  m_Layer: 13
+  m_Layer: 16
   m_Name: W_Pawn (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3094,7 +3094,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2048915708}
   - component: {fileID: 2048915707}
-  m_Layer: 13
+  m_Layer: 16
   m_Name: W_Pawn (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
