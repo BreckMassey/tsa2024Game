@@ -62,7 +62,7 @@ public class LevelSelect : MonoBehaviour
 
     }
 
-    private void OnTriggeStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         playerInArea = true;
         instructionMenu.SetActive(true);

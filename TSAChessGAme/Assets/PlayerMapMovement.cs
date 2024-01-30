@@ -9,7 +9,7 @@ public class PlayerMapMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("playerMapX") == null || PlayerPrefs.GetInt("playerMapY") == null) {
+        if (PlayerPrefs.GetInt("playerMapX")==0 && PlayerPrefs.GetInt("playerMapY") == 0) {
 
             PlayerPrefs.SetInt("playerMapX", (int)transform.position.x);
             PlayerPrefs.SetInt("playerMapY", (int)transform.position.y);

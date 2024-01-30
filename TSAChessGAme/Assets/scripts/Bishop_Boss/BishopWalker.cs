@@ -37,6 +37,7 @@ public class BishopWalker : MonoBehaviour
         if (collision.tag == "checker")
         {
             hp--;
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("BishopWall") 

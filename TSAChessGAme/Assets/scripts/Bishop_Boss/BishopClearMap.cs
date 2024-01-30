@@ -12,12 +12,25 @@ public class BishopClearMap : MonoBehaviour
     public int mapHeight = 10; // Vertical spawn
     public float horizontalOffset = 2.0f;
     public float verticalOffset = 2.0f;
-    public int[] horizontalGapPositions = new int[3] {3, 6, 9}; // Horizontal gap positions
-    public int[] verticalGapPositions = new int[3] {2, 5, 8}; // Vertical gap positions
+    public int[] horizontalGapPositions = new int[3] { 3,6, 9 }; //new int[3] {3, 6, 9}; // Horizontal gap positions
+    public int[] verticalGapPositions = new int[2] { 5, 8 }; //new int[3] {2, 5, 8}; // Vertical gap positions
 
+    public bool spawning;
+    float spawnCountdown;
     private void Start()
     {
-        StartCoroutine(SpawnBulletRowRoutine());
+     //   StartCoroutine(SpawnBulletRowRoutine());
+    }
+
+    private void Update()
+    {
+        spawnCountdown -= Time.deltaTime;
+        if (spawning && spawnCountdown <= 0)
+        {
+            bool isVertical = Random.Range(0, 2) == 1;
+            SpawnBulletRow(isVertical);
+            spawnCountdown = spawnInterval * Random.Range(0.5f, 2);
+        }
     }
 
     private IEnumerator SpawnBulletRowRoutine()
