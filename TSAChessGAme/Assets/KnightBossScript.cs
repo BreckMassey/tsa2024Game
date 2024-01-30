@@ -15,6 +15,17 @@ public class KnightBossScript : BossParent
     public GameObject deathParticle;
 
     public GameObject victoryScreen;
+
+    public GameObject player;
+
+    public float[] stageHealths;
+
+    float startDelay = 2;
+
+    public Knight_Shoot knightShooter;
+    public Sweeper_Spawner sweeper_Spawner;
+    public string playerPrefLevelName;
+
     // Start is called before the first frame update
     void Start()
     {
