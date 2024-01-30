@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/KnightBossFight.unity
     guid: 9366c43cf44954dbf8c3987352e0467b
+  - enabled: 1
+    path: Assets/Scenes/Rook.unity
+    guid: 222146560a7f68c40bb36fad0d39d030
   m_configObjects: {}

@@ -9,7 +9,13 @@ public class PlayerMapMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PlayerPrefs.GetInt("playerMapX") == null || PlayerPrefs.GetInt("playerMapY") == null) {
+
+            PlayerPrefs.SetInt("playerMapX", (int)transform.position.x);
+            PlayerPrefs.SetInt("playerMapY", (int)transform.position.y);
+        }
+
+       transform.position=new Vector2(PlayerPrefs.GetInt("playerMapX"), PlayerPrefs.GetInt("playerMapY"));
     }
 
     // Update is called once per frame
@@ -17,5 +23,7 @@ public class PlayerMapMovement : MonoBehaviour
     {
         //rb.transform.Translate(new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"))*movementSpeed*Time.deltaTime);
         rb.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * movementSpeed;
+        PlayerPrefs.SetInt("playerMapX", (int)transform.position.x);
+        PlayerPrefs.SetInt("playerMapY", (int)transform.position.y);
     }
 }
