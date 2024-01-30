@@ -20,11 +20,16 @@ public class Ground_Sweeper_Knight : MonoBehaviour
             
             transform.Translate(-speed * Time.deltaTime, 0, 0);
         }
+        if (movingUp&&transform.position.y>=-7.5f)
+        {
+            movingUp = false;
+            startMovingLeft = true;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("ground"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("BishopWalker"))
         {
             if (movingUp)
             {
@@ -35,7 +40,9 @@ public class Ground_Sweeper_Knight : MonoBehaviour
 
         if (collision.gameObject.CompareTag("player"))
          {
-             Destroy(gameObject);
+            collision.collider.GetComponent<PlayerController2>().takeDamage();
+
+            Destroy(gameObject);
          }
     }
 

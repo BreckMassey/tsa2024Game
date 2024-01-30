@@ -7,6 +7,7 @@ public class Knight_Move : MonoBehaviour
     public float speed = 2f; // Speed of movement
     private bool movingUp = true; // Initial direction of movement
 
+    
     void Update()
     {
         // Move the object up or down based on the current direction

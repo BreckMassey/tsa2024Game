@@ -9,7 +9,8 @@ public class LevelSelect : MonoBehaviour
 
     public int level;
     public BoxCollider2D[] passThroughColliders;
-    public SpriteRenderer[] passThroughSprites;
+    public SpriteRenderer[] passThroughSpritesDisable;
+    public SpriteRenderer[] passThroughSpritesEnable;
     public LayerMask playerLayer;
     bool playerInArea;
     public string bossName;
@@ -31,9 +32,13 @@ public class LevelSelect : MonoBehaviour
                 {
                     passThroughColliders[i].enabled = false;
                 }
-                for (int i = 0; i < passThroughSprites.Length; i++)
+                for (int i = 0; i < passThroughSpritesDisable.Length; i++)
                 {
-                    passThroughSprites[i].enabled = false;
+                    passThroughSpritesDisable[i].enabled = false;
+                }
+                for (int i = 0; i < passThroughSpritesEnable.Length; i++)
+                {
+                    passThroughSpritesEnable[i].enabled = true;
                 }
             }
         }
@@ -50,14 +55,21 @@ public class LevelSelect : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("error");
         playerInArea = true;
         instructionMenu.SetActive(true);
         instructionMenu.GetComponent<endScreenEffects>().expand();
         titleText.text = bossName;
 
     }
-    
+
+    private void OnTriggeStay2D(Collider2D collision)
+    {
+        playerInArea = true;
+        instructionMenu.SetActive(true);
+        instructionMenu.GetComponent<endScreenEffects>().expand();
+        titleText.text = bossName;
+
+    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {

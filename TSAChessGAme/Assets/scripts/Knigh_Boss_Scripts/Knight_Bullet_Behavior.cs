@@ -7,7 +7,7 @@ public class Knight_Bullet_Behavior : MonoBehaviour
     public float speed = 5f;
     private GameObject player;
     private bool hasRotated = false;
-
+   
     void Start()
     {
         player = GameObject.FindWithTag("player"); 
