@@ -65,16 +65,22 @@ public class endScreenEffects : MonoBehaviour
     }
     public void contract()
     {
-        vHeight = -100;
-        expanding = false;
-        height = Mathf.Min(height, desiredHeight);
+        if (expanding)
+        {
+            vHeight = -100;
+            expanding = false;
+            height = Mathf.Min(height, desiredHeight);
+        }
     }
 
     public void expand()
     {
-        vHeight = 100;
-        expanding = true;
-        height = Mathf.Max(height, 0);
+        if (!expanding)
+        {
+            vHeight = 100;
+            expanding = true;
+            height = Mathf.Max(height, 0);
+        }
     }
 
 
