@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BishopBoss.unity
     guid: f539158aa02034423bbaa1a941826067
+  - enabled: 1
+    path: Assets/Scenes/Win Scene.unity
+    guid: 4af26ee6159ec744da52c22945cee627
   m_configObjects: {}

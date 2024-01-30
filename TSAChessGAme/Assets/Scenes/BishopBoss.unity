@@ -4012,12 +4012,16 @@ PrefabInstance:
       value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 4716200273314127544, guid: ff9d8bb0e97aa48509a65027bcd700a2, type: 3}
+      propertyPath: verticalGapPositions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716200273314127544, guid: ff9d8bb0e97aa48509a65027bcd700a2, type: 3}
       propertyPath: verticalGapPositions.Array.data[0]
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4716200273314127544, guid: ff9d8bb0e97aa48509a65027bcd700a2, type: 3}
       propertyPath: verticalGapPositions.Array.data[1]
-      value: 7
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4716200273314127544, guid: ff9d8bb0e97aa48509a65027bcd700a2, type: 3}
       propertyPath: verticalGapPositions.Array.data[2]

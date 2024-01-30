@@ -1125,7 +1125,7 @@ GameObject:
   - component: {fileID: 441333968}
   - component: {fileID: 441333970}
   - component: {fileID: 441333971}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: W_King
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2746,7 +2746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3505884977324555698, guid: 8c4a2ecdc375bcc499934fadde6fa1ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3505884977324555698, guid: 8c4a2ecdc375bcc499934fadde6fa1ec, type: 3}
       propertyPath: m_LocalRotation.w
