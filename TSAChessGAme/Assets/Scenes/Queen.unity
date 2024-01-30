@@ -1206,6 +1206,37 @@ Transform:
   m_Father: {fileID: 1778019378}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &718338198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 718338199}
+  m_Layer: 0
+  m_Name: shoot spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &718338199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718338198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.95, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1522181536}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &750154482
 GameObject:
   m_ObjectHideFlags: 0
@@ -2597,9 +2628,9 @@ GameObject:
   - component: {fileID: 1522181536}
   - component: {fileID: 1522181535}
   - component: {fileID: 1522181534}
-  - component: {fileID: 1522181537}
+  - component: {fileID: 1522181538}
   m_Layer: 17
-  m_Name: Rook boss
+  m_Name: Queen boss
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2695,11 +2726,12 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 718338199}
   - {fileID: 1914984477}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1522181537
+--- !u!114 &1522181538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2708,24 +2740,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1522181531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 708ef9cd12b5fc04eb787afdfd5c7b14, type: 3}
+  m_Script: {fileID: 11500000, guid: 5848710e850a7a949bd8ac50e0177c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
   stage: 0
-  walkingPawnPrefab: {fileID: 2663923376698231623, guid: fcdc69426244e3f4b879a67d098284ae, type: 3}
+  walkingPawnPrefab:
+  - {fileID: 2663923376698231623, guid: c53c2a4829779b34199c99be8fa77b4a, type: 3}
+  - {fileID: 2663923376698231623, guid: fcdc69426244e3f4b879a67d098284ae, type: 3}
   pawnLayer: 10
-  fallingChecker: {fileID: 0}
-  shootingChecker: {fileID: 0}
+  fallingChecker: {fileID: 4278017811809586276, guid: 01c94f9678ab33a448252bbb2bd523eb, type: 3}
+  shootingChecker: {fileID: 8045714402256100543, guid: 868436a1032c2eb41a19718a3f3c56fe, type: 3}
   deathParticle: {fileID: 740847840511789333, guid: f0f15328b0b69404eb321cba3a80a018, type: 3}
   stageHealths:
+  - 100
   - 60
-  - 40
-  sprite: {fileID: 1914984478}
+  - 30
+  sprite: {fileID: 1522181534}
   healthSlider: {fileID: 2053066672}
   smoothHealth: 0
   winScreen: {fileID: 1129318270}
-  playerPrefLevelName: rookLevel
+  playerPrefLevelName: queenLevel
   positions:
   - {fileID: 1764148091}
   - {fileID: 657077566}
@@ -2741,6 +2776,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  shootSpawnPoint: {fileID: 718338199}
 --- !u!1 &1555255233
 GameObject:
   m_ObjectHideFlags: 0
@@ -3333,7 +3369,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1522181536}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1914984478
 SpriteRenderer:
@@ -3376,7 +3412,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 322aed7a2701af64db2923562bce81de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18501cf4b01e093478caa479786d5cc8, type: 3}
   m_Color: {r: 1, g: 0.42830187, b: 0.42830187, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3854,7 +3890,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5657435328736949456, guid: b2fa4bab3ed5a6240a7366fb4f9c2db3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5657435328922649181, guid: b2fa4bab3ed5a6240a7366fb4f9c2db3, type: 3}
       propertyPath: m_AnchorMax.x

@@ -35,7 +35,8 @@ public class endScreenEffects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        delay -= Time.deltaTime;
+        Debug.Log(delay + " " + expanding);
+        delay -= Time.unscaledTime;
         if (expanding)
         {
             if (delay < 0 && height < desiredHeight)
