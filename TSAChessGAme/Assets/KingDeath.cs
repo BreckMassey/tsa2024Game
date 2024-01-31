@@ -24,7 +24,7 @@ public class KingDeath : MonoBehaviour
         if (Mathf.Abs(angle) < 80)
         {
             angle -= vAngle;
-            vAngle += Time.deltaTime*0.1f;
+            vAngle += Time.deltaTime*0.5f;
         }
         kingImage.color=Color.Lerp(aliveColor, deathColor, Mathf.Abs(angle) / 80);
 

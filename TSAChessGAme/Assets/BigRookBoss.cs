@@ -200,7 +200,7 @@ public class BigRookBoss : BossParent
     }
 
     void moving() {
-        if (Vector2.Distance(transform.position, positions[currentPos].position) < 0.1f) {
+        if (Vector2.Distance(transform.position, positions[currentPos].position) < 0.3f) {
             List<Transform> possibleLocations = new List<Transform>();
             List<int> possibleLocationsI = new List<int>();
             for (int i = 0; i < positions.Length; i++) {
